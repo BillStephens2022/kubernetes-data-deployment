@@ -20,6 +20,6 @@ spec:
               name: story-volume # defined below in volumes list
       volumes:
         - name: story-volume
-          hostPath:
-            path: /data
-            type: DirectoryOrCreate  # will use the directory at path above if exists, otherwise it will create it
+          persistentVolumeClaim:
+            claimName: host-pvc
+            

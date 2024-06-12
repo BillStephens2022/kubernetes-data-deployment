@@ -6,6 +6,7 @@ spec:
   capacity:
     storage: 1Gi
   volumeMode: Filesystem
+  storageClassName: standard
   accessModes:
     - ReadWriteOnce  # can only be accessed from one node, but can be accessed by multiple paths.  THis is only available option to use when using hostPath type volume.  Other options (but not available to hostPath type are 'ReadOnlyMany' and 'ReadWriteMany')
   hostPath:
