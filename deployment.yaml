@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: story-deployment
 spec: 
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: story
@@ -14,4 +14,12 @@ spec:
     spec:
       containers:
         - name: story
-          image: two4onebill/kub-data-demo
+          image: two4onebill/kub-data-demo:1
+          volumeMounts:
+            - mountPath: /app/story
+              name: story-volume # defined below in volumes list
+      volumes:
+        - name: story-volume
+          hostPath:
+            path: /data
+            type: DirectoryOrCreate  # will use the directory at path above if exists, otherwise it will create it
